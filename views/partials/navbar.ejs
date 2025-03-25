@@ -1,0 +1,12 @@
+<div class="flex justify-evenly items-center text-white" style="background-color: rgb(41, 39, 39);">
+    <a href="/" class="text-2xl">Blogify</a>
+    <a href="/">Home</a>
+    <%if(locals.user){%>
+        <a href="/blog/add">Add blog</a>
+        <a href="">Profile</a>
+        <a href="/user/logout">logOut</a>
+    <%}else{%>
+        <a href="/user/signup">SignUp</a>
+        <a href="/user/signin">SignIn</a>
+    <%}%>
+</div>

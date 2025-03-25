@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/head')%>
+    <title>Document</title>
+</head>
+<body class="p-4">
+    <%-include('./partials/navbar')%>
+    <%if(locals.blog){%>
+        <h1 class="text-6xl text-center m-2 uppercase font-bold"><%=blog.title%></h1>
+        <img src="<%=blog.coverImage%>" alt="" class="w-full rounded-md mx-auto">
+        <p class="text-lg text-center m-2"><%=blog.body%></p>
+    <%}%>
+     <div class="m-2 w-full border-1">
+        <form action="/blog/comment/<%=blog._id%>" method="post" class="flex justify-center items-center">
+            <input type="text" name="content" id="" placeholder="enter your content" required class="w-[80%] h-full text-center text-xs">
+            <button type="submit" class="w-[20%] font-bold text-lg h-full">submit</button>
+        </form>
+        <%if(locals.comments){%>
+            <div class="border-t-1 p-1 m-1  mx-auto flex flex-col justify-center items-center">
+                <%for(let i=0;i<comments.length;i++){%>
+                <div class="w-full">
+                    <img src="<%=comments[i].createdBy.profileImageUrl%>" alt="" class="inline w-[2rem] h-[2rem]">
+                    <h1 class="inline "><%=comments[i].content%></h1>
+                </div>    
+                <%}%>
+            </div>
+        <%}%>
+
+     </div>
+
+    <div class="mt-4 w-full flex flex-row items-end">
+        <img src="<%=blog.createdBy.profileImageUrl%>" alt="" class="w-[50px] h-[50px] inline">
+        <h1 class="inline"><%=blog.createdBy.fullName%></h1>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/head')%>
+    <title>Document</title>
+</head>
+<body class="p-2">
+    <%-include('./partials/navbar')%>
+
+    <%if(locals.blogs){%>
+        <div class="border-1 mt-10 rounded-md p-4">
+            <%for(let i=0;i<blogs.length;i++){%>
+                <div class="border-1 border-green-500 m-1 p-4 mx-auto w-full rounded-md">
+                    <h1 class="text-center text-8xl uppercase m-2 font-[500]"><%=blogs[i].title%></h1>
+                    <img src="<%=blogs[i].coverImage%>" alt="" class="w-full mx-auto rounded-sm">
+                    <a href="/blog/<%=blogs[i]._id%>" class="text-xl bg-black text-green-500 text-center w-full block p-1 m-2 mx-auto rounded-lg ">Read full blog</a>
+                </div>
+            <%}%>
+        </div>
+    <%}%>
+
+</body>
+</html>

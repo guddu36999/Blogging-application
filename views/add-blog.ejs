@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./partials/head')%>
+    <title>add-blog page</title>
+</head>
+<body class="p-2">
+    <%-include('./partials/navbar')%>
+
+    <form action="/blog" enctype="multipart/form-data" method="post" class="flex flex-col border-1 mt-20 rounded-lg text-sm p-4 w-[90%] mx-auto">
+        <input type="text" name="title" id="" placeholder="enter the title of this blog" required class="text-center p-2 m-2">
+        <textarea name="body" id="" placeholder="enter text" required class="text-center p-2 m-2"></textarea>
+        <label for="coverImage"  class="text-center p-2 m-2">choose you coverImage</label>
+        <input type="file" name="coverImage" id="" required class="text-center p-2 m-2 border-1">
+        <button type="submit" class="text-lg font-bold text-green-500 bg-black rounded-xl">submit</button>
+    </form>
+
+</body>
+</html>
