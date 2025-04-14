@@ -5,34 +5,33 @@
     <title>Document</title>
 </head>
 <body class="p-4">
-    <%-include('./partials/navbar')%>
     <%if(locals.blog){%>
-        <h1 class="text-6xl text-center m-2 uppercase font-bold"><%=blog.title%></h1>
-        <img src="<%=blog.coverImage%>" alt="" class="w-full rounded-md mx-auto">
-        <p class="text-lg text-center m-2"><%=blog.body%></p>
+        <h1 class="text-7xl text-center m-8 uppercase font-serif text-blue-900"><%=blog.title%></h1>
+        <img src="<%=blog.coverImage%>" alt="" class="w-[95%] mx-auto rounded-md shadow-md m-4">
+        <p class="text-lg text-center m-2 w-[95%] mx-auto"><%=blog.body%></p>
     <%}%>
-     <div class="m-2 w-full border-1">
-        <form action="/blog/comment/<%=blog._id%>" method="post" class="flex justify-center items-center">
-            <input type="text" name="content" id="" placeholder="enter your content" required class="w-[80%] h-full text-center text-xs">
-            <button type="submit" class="w-[20%] font-bold text-lg h-full">submit</button>
+
+    <h1 class="text-left text-sm w-[95%] mx-auto m-4"><pre class="uppercase text-lg font-serif">AUTHOR:</pre><%=blog.createdBy.fullName%></h1>
+
+     <div class="m-2  w-[95%] mx-auto h-[3rem] border rounded-3xl shadow-lg">
+        <form action="/blog/comment/<%=blog._id%>" method="post" class="w-full h-full flex justify-center items-center rounded-3xl">
+            <input type="text" name="content" id="" placeholder="enter your comment" required class="w-[80%] mx-auto h-full text-center text-xs rounded-3xl">
+            <button type="submit" class="w-[20%] font-bold text-lg hover:text-2xl h-full hover:text-red-600">submit</button>
         </form>
+    </div>
+
         <%if(locals.comments){%>
-            <div class="border-t-1 p-1 m-1  mx-auto flex flex-col justify-center items-center">
+            <div class="p-1 m-1 w-[95%] mx-auto flex flex-col">
                 <%for(let i=0;i<comments.length;i++){%>
-                <div class="w-full">
-                    <img src="<%=comments[i].createdBy.profileImageUrl%>" alt="" class="inline w-[2rem] h-[2rem]">
-                    <h1 class="inline "><%=comments[i].content%></h1>
+                <div class="w-full m-1">
+                    <h1 class="w-full text-sm"><%=comments[i].content%></h1>
                 </div>    
                 <%}%>
             </div>
         <%}%>
 
-     </div>
+    
 
-    <div class="mt-4 w-full flex flex-row items-end">
-        <img src="<%=blog.createdBy.profileImageUrl%>" alt="" class="w-[50px] h-[50px] inline">
-        <h1 class="inline"><%=blog.createdBy.fullName%></h1>
-    </div>
 
 </body>
 </html>

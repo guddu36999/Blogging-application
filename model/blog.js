@@ -5,7 +5,8 @@ const blogSchema=new mongoose.Schema({
     body:{type:String,required:true},
     coverImage:{type:String},
     createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'user'}
-
+},{
+    timestamps:true
 });
 
 const blog=mongoose.model("blog",blogSchema);

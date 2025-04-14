@@ -22,6 +22,11 @@ router.get('/add',(req,res)=>{
   res.render("add-blog.ejs",{user:req.user});
 });
 
+router.get('/all',async(req,res)=>{
+    const blogs=await blog.find({});
+    res.render("allBlogs.ejs",{blogs:blogs});
+});
+
 router.get('/:id',async(req,res)=>{
   const data=await blog.findById(req.params.id).populate('createdBy');
   
@@ -46,9 +51,10 @@ router.post('/',upload.single('coverImage'),async(req,res)=>{
 router.post('/comment/:blogId',async(req,res)=>{
   if(!req.body.content)return res.json({msg:"content is required!"});
   const blogId =new mongoose.Types.ObjectId(req.params.blogId);
+  // i should sign in before commenting
   const new_comment=await comment.create({
     content:req.body.content,
-    createdBy:req.user.id,
+    createdBy:req.user.id,  
     blogId:req.params.blogId,
   });
   return res.redirect(`/blog/${req.params.blogId}`);

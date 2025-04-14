@@ -4,20 +4,58 @@
     <%-include('./partials/head')%>
     <title>Document</title>
 </head>
-<body class="p-2">
+<body class="w-full  min-h-screen ">
+    <!-- bg-[#dadada] -->
     <%-include('./partials/navbar')%>
+    <%-include('./partials/title')%>
+    <%-include('./partials/heroSection')%>
 
     <%if(locals.blogs){%>
-        <div class="border-1 mt-10 rounded-md p-4">
-            <%for(let i=0;i<blogs.length;i++){%>
-                <div class="border-1 border-green-500 m-1 p-4 mx-auto w-full rounded-md">
-                    <h1 class="text-center text-8xl uppercase m-2 font-[500]"><%=blogs[i].title%></h1>
-                    <img src="<%=blogs[i].coverImage%>" alt="" class="w-full mx-auto rounded-sm">
-                    <a href="/blog/<%=blogs[i]._id%>" class="text-xl bg-black text-green-500 text-center w-full block p-1 m-2 mx-auto rounded-lg ">Read full blog</a>
+        <h1 class="w-[95%] mx-auto font-md text-2xl m-8">LATEST</h1>
+        <div class="w-[95%] h-[550px] mx-auto flex justify-evenly items-center gap-8 m-5">
+           <%for(let i=0;i<Math.min(4,blogs.length);i++){%>
+                <%const today=blogs[i].createdAt;
+                const newDates=today.toString().substring(4,21);%>
+                <%
+                  const sizeLength=["45%","75%","55%","65%"];
+                %>
+              <div class="w-1/4 h-full flex flex-col justify-between items-center ">
+                <div class="w-full h-[sizeLength[i]] flex justify-center items-center">
+                    <img src="<%=blogs[i].coverImage%>" alt="" class="max-w-full max-h-full">
                 </div>
-            <%}%>
-        </div>
+                <div class="w-full h-full flex flex-col text-left p-2 overflow-hidden">
+                    <a href="/blog/<%=blogs[i]._id%>" class="w-full mx-auto  m-1 text-sm">Read</a>
+                    <h1 class="w-full mx-auto text-sm m-1 text-left"><%=newDates%></h1>
+                    <h1 class="w-full mx-auto uppercase text-2xl font-medium"><%=blogs[i].title%></h1>
+                    </div>
+              </div>
+           <%}%>
+        </div>    
     <%}%>
+
+    
+
+    <div class="w-[95%] mx-auto  h-[700px] m-10 flex">
+        <div class="w-1/2 h-full  bg-black text-white hover:text-violet-900 p-32 flex flex-col justify-center items-center">
+            <h1 class="text-6xl leading-relaxed  font-bold">SIGN UP TO FILL THAT INBOX VOID</h1>
+            <div class="w-full flex flex-col">
+              <label for="email" class="w-full font-light">Email *</label>
+              <input type="email" name="email"  id="email" class="w-full hover:text-white  bg-black border-b-2 mb-3 mt-3 focus:outline-none focus:bg-black hover:bg-black">
+            </div>
+            <div class="w-full flex justify-between items-center">
+                <input type="checkbox" name="" id="" class="">
+                <h1>Subscribe to newsletter</h1>
+                <button class="text-lg hover:text-base transition-all transition-200 ease-in-out font-medium ">SUBSCRIBE</button>
+            </div>
+        </div>
+
+        <div class="w-1/2 h-full ">
+            <img src="/images/mohammad-rahmani-gA396xahf-Q-unsplash.jpg" class="w-full h-full" alt="">
+
+        </div>
+    </div>
+
+    <%-include('./partials/footer')%> 
 
 </body>
 </html>

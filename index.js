@@ -36,7 +36,7 @@ const blogRoutes=require('./routes/blog');
 app.use('/blog',blogRoutes);
 
 app.get('/',async(req,res)=>{
-    const allBlogs=await blog.find({});
+    const allBlogs=await blog.find({}).sort({createdAt:-1});
     return res.render("home.ejs",{user:req.user,blogs:allBlogs});
 });
 

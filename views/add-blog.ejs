@@ -4,15 +4,16 @@
     <%-include('./partials/head')%>
     <title>add-blog page</title>
 </head>
-<body class="p-2">
-    <%-include('./partials/navbar')%>
+<body class="p-4 flex flex-col items-evenly cursor-pointer text-blue-900">
 
-    <form action="/blog" enctype="multipart/form-data" method="post" class="flex flex-col border-1 mt-20 rounded-lg text-sm p-4 w-[90%] mx-auto">
-        <input type="text" name="title" id="" placeholder="enter the title of this blog" required class="text-center p-2 m-2">
-        <textarea name="body" id="" placeholder="enter text" required class="text-center p-2 m-2"></textarea>
-        <label for="coverImage"  class="text-center p-2 m-2">choose you coverImage</label>
-        <input type="file" name="coverImage" id="" required class="text-center p-2 m-2 border-1">
-        <button type="submit" class="text-lg font-bold text-green-500 bg-black rounded-xl">submit</button>
+    <h1 class="m-5 w-[95%] mx-auto h-[10%] text-8xl  font-serif font-medium ">Add Blog</h1>
+
+    <form action="/blog" enctype="multipart/form-data" method="post" class="w-[95%] h-[75%] font-thin flex flex-col justify-center items-center border mt-10 rounded-md p-4 m-2 mx-auto">
+        <input type="text" name="title" id="" placeholder="Title" required class="bg-white/10 backdrop-blur-md w-full p-2 m-2 text-sm rounded-2xl border  shadow-lg focus:outline-none">
+        <textarea name="body" id="" placeholder="Body :)" required class="bg-white/10 backdrop-blur-md text-sm p-2 m-2 w-full h-[80%] shadow-lg rounded-md border hover:outline-none focus:outline-none border "></textarea>
+        <label for="coverImage"  class="p-2 m-2 text-md w-full ">Choose you coverImage</label>
+        <input type="file" name="coverImage" id="" required class=" w-full text-center p-2 m-2 border-1 rounded-md ">
+        <button type="submit" class="uppercase w-full m-2 p-2 text-md font-thin hover:font-bold hover:text-xl  rounded-2xl shadow-lg border hover:outline-none focus:outline-none border">submit</button>
     </form>
 
 </body>

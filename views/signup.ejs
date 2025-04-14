@@ -4,14 +4,17 @@
    <%-include('./partials/head')%>
     <title>sign-Up</title>
 </head>
-<body class="p-1">
-    <%-include('./partials/navbar')%>
-    <h1 class="text-6xl text-center mt-4">signUp page!</h1>
-     <form action="/user/signup" method="post" class="flex flex-col justify-center items-center  w-[80%] h-[20rem]  mx-auto   border-1 mt-10 rounded-md text-xs p-16">
-        <input type="text" name="fullName" id="" placeholder="enter your fullName" required class="p-1 m-2 w-full text-center">
-        <input type="text" name="email" id="" placeholder="enter your email" required class="p-2 m-2 w-full text-center">
-        <input type="text" name="password" id="" placeholder="enter your password" required class="p-2 m-2 w-full text-center">
-        <button type="submit" class="text-lg font-bold">signUp</button>
+<body class="flex flex-col justify-center items-center p-4">
+    <!-- <%-include('./partials/navbar')%> -->
+     <form action="/user/signup" method="post" class="flex flex-col justify-center items-center  w-[20%] h-[75%]  mx-auto  mt-10 rounded-lg text-xs p-16 shadow-2xl bg-black text-white">
+        <h1 class="font-bold text-4xl ">New user!</h1>
+        <label for="fullName" class="w-full m-2 font-light text-left">fullName</label>
+        <input type="text" name="FullName" id=""  required class="p-1 m-2 w-full   border-b-2 bg-black focus:outline-none">
+        <label for="email" class="w-full m-2 font-light text-left">Email</label>
+        <input type="text" name="email" id=""  required class="p-1 m-2 w-full   border-b-2 bg-black focus:outline-none">
+        <label for="password" class="w-full m-2 font-light text-left">Password</label>
+        <input type="text" name="password" id="" required class="p-1 m-2 w-full   border-b-2 bg-black focus:outline-none">
+        <button type="submit" class="text-lg font-bold hover:text-4xl hover:text-red-600">signUp</button>
      </form>
 </body>
 </html>
