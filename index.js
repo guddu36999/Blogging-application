@@ -5,6 +5,8 @@ const app=express();
 const port=3003;
 app.set('view engine',ejs);
 const blog=require('./model/blog');
+require('dotenv').config();
+
 const db=process.env.MONGO_URI;
 //connecting to mongoDB
 // async function connection(){
