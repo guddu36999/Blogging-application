@@ -5,18 +5,28 @@ const app=express();
 const port=3003;
 app.set('view engine',ejs);
 const blog=require('./model/blog');
-
+const db=process.env.MONGO_URI;
 //connecting to mongoDB
-async function connection(){
-    try{
-        mongoose.connect('mongodb://localhost:27017/blogify');
-        console.log(`connected to mongoDB`);
-    }
-    catch(err){
-        console.error(`error:${err}`);
-    }
-}
-connection();
+// async function connection(){
+//     try{
+// mongoose.connect(db,{
+//         useNewUrlParser:true,
+//         useUnifiedTopology:true
+//     })
+//         console.log(`connected to mongoDB`);
+//     }
+//     catch(err){
+//         console.error(`error:${err}`);
+//     }
+// }
+// connection();
+
+mongoose.connect(db,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+})
+.then(()=>console.log('MongoDB connected'))
+.catch(err=> console.error('MongoDb Connection Error:',err));
 
 //middleware
 app.use(express.json());
