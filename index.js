@@ -2,12 +2,13 @@ const express=require('express');
 const ejs=require('ejs');
 const mongoose=require('mongoose');
 const app=express();
-const port=3003;
+const port = process.env.PORT || 3003;
+
 app.set('view engine',ejs);
 const blog=require('./model/blog');
 require('dotenv').config();
 
-const db=process.env.MONGO_URI;
+const db=process.env.MONGO_URI 
 //connecting to mongoDB
 // async function connection(){
 //     try{
