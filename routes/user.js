@@ -13,13 +13,19 @@ router.get('/signup',(req,res)=>{
 });
 
 router.post('/signup',async(req,res)=>{
+    try{
     const {fullName,email,password}=req.body;
+    if(!fullName||!email||!password)return res.send('anything is missing...');
     await user.create({
          fullName,
          email,
          password,
     });
     return res.redirect('/user/signin');
+    }
+    catch(err){
+        console.log(err);
+    }
 });
 
 router.post('/signin',async(req,res)=>{
