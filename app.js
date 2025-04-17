@@ -1,35 +1,26 @@
+require('dotenv').config();
 const express=require('express');
 const ejs=require('ejs');
 const mongoose=require('mongoose');
 const app=express();
-const port = process.env.PORT || 3003;
+const port =process.env.PORT || 3003;
 
 app.set('view engine',ejs);
 const blog=require('./model/blog');
-require('dotenv').config();
 
-const db=process.env.MONGO_URI 
-//connecting to mongoDB
-// async function connection(){
-//     try{
-// mongoose.connect(db,{
-//         useNewUrlParser:true,
-//         useUnifiedTopology:true
-//     })
-//         console.log(`connected to mongoDB`);
-//     }
-//     catch(err){
-//         console.error(`error:${err}`);
-//     }
-// }
-// connection();
 
-mongoose.connect(db,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
-.then(()=>console.log('MongoDB connected'))
-.catch(err=> console.error('MongoDb Connection Error:',err));
+async function ConnectDatabase(url){
+    try{
+       mongoose.connect(url);   
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+ConnectDatabase(process.env.MONGO_URL);
+
+
 
 //middleware
 app.use(express.json());
