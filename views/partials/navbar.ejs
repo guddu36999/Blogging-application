@@ -1,9 +1,9 @@
-<div class="flex justify-center items-center text-black  text-sm w-full h-12 gap-4 p-8">
-    <a href="/" class="h-full">Home</a>
-    <a href="/blog/all" class="h-full">All blog</a>
+<div class="flex justify-center items-center  text-sm w-full gap-4 p-8">
+    <a href="/" class="h-full  hover:border-b-4 hover:border-b-green-500">Home</a>
+    <a href="/blog/all" class="h-full hover:border-b-4 hover:border-b-green-500">All blog</a>
     <%if(locals.user){%>
-        <a href="/user/logout" class="h-full">LogOut</a>
+        <a href="/user/logout" class="h-full hover:border-b-4 hover:border-b-green-500">LogOut</a>
     <%}else{%>
-        <a href="/user/signin" class="h-full">SignIn</a>
+        <a href="/user/signin" class="h-full hover:border-b-4 hover:border-b-green-500">SignIn</a>
     <%}%>
 </div>
